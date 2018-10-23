@@ -1,0 +1,34 @@
+service: auth-service-v2
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  get-bikes:
+    handler: src/controllers/get-bikes.handler
+    events:
+      - http:
+          method: get
+          path: v1/bikes
+
+  get-bike-by-id:
+    handler: src/controllers/get-bike.handler
+    events:
+      - http:
+          method: get
+          path: v1/bikes/{id}
+
+  add-bike:
+    handler: src/controllers/add-bike.handler
+    events:
+      - http:
+          method: post
+          path: v1/bikes
+

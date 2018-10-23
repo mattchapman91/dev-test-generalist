@@ -1,0 +1,26 @@
+{
+  "name": "dev-test-generalist",
+  "version": "1.0.0",
+  "description": "Matt's serverless implementation of the dev test",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattchapman91/dev-test-generalist.git"
+  },
+  "author": "Mathew Chapman",
+  "homepage": "https://github.com/mattchapman91/dev-test-generalist.git",
+  "dependencies": {
+    "mongodb": "^3.1.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "serverless-offline": "^3.18.0",
+    "serverless-webpack": "^3.1.2",
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
