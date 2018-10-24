@@ -3,6 +3,9 @@ import BikesModel from '../models/bikes'
 /**
  * Get's all available bikes from the bikes collection in the database.
  *
+ * @param {Object} event The event passed to Lambda from API gateway
+ * @param {Object} bikesModel The bikes model, passed in from the handler for testing purposes
+ * 
  * @returns {Object} Returns an object in the format accepted by API gateway, The response format follows
  * the JSEND standard.
  */

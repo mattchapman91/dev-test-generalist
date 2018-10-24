@@ -12,7 +12,8 @@
   "author": "Mathew Chapman",
   "homepage": "https://github.com/mattchapman91/dev-test-generalist.git",
   "dependencies": {
-    "mongodb": "^3.1.8"
+    "mongodb": "^3.1.8",
+    "joi": "^12.0.0"
   },
   "devDependencies": {
     "nyc": "^10.3.2",
