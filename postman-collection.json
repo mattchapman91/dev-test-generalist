@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "fcec9e37-4a5a-499d-abd8-2dbe6a1b1112",
+		"name": "Bike Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all bikes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/bikes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"bikes"
+					]
+				},
+				"description": "This endpoint will return an array of all bikes in the database."
+			},
+			"response": []
+		},
+		{
+			"name": "Get bike by bikeId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/bikes/:bikeId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"bikes",
+						":bikeId"
+					],
+					"variable": [
+						{
+							"key": "bikeId",
+							"value": "2",
+							"description": "The bikeId of the bike to query."
+						}
+					]
+				},
+				"description": "This request will return a data on a single by a specific bike by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new Bike",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Example Bike Title\", \"description\": \"Example Bike Description\", \"price\": \"45\"}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/bikes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"bikes"
+					]
+				},
+				"description": "Validates and add's a new bike to the database."
+			},
+			"response": []
+		}
+	]
+}

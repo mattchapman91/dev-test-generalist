@@ -1,6 +1,7 @@
 {
   "name": "dev-test-generalist",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "Matt's serverless implementation of the dev test",
   "scripts": {
     "test": "nyc --check-coverage --lines 100 --functions 100 --branches 100 ava tests/**/*.js"

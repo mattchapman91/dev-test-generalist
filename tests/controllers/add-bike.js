@@ -14,7 +14,7 @@ test.afterEach((t) => {
   t.context.sandbox.restore()
 })
 
-test('Getting a single bike => The handler function should return a 200 event when called.', async (t) => {
+test('Add Bike => Should return 200 with the newly inserted document when successful .', async (t) => {
   const event = { body: "{\"name\": \"Test-bike\", \"description\": \"description\", \"price\": \"450\" }" }
   const bikesModel = new BikesModel()
 
@@ -26,7 +26,7 @@ test('Getting a single bike => The handler function should return a 200 event wh
   t.true(typeof body.data.bikeId === 'number')
 })
 
-test('Adding a bike => Returns a 500 when unable to connect to the database.', async (t) => {
+test('Add Bike => Should return 500 with a generic error message when unable to connect to MongoDB.', async (t) => {
   const bikesModel = new BikesModel()
   const event = { body: "{\"name\": \"Test-bike\", \"description\": \"description\", \"price\": \"450\" }" }
   const error = new Error();
@@ -42,7 +42,7 @@ test('Adding a bike => Returns a 500 when unable to connect to the database.', a
   t.is(body.message, 'Something went wrong')
 })
 
-test('Adding a bike => Returns a 400 when there the bike is not found.', async (t) => {
+test('Add Bike => Returns a 400 when we were unable to insert the bike to the database.', async (t) => {
   const bikesModel = new BikesModel()
   const event = { body: "{\"name\": \"Test-bike\", \"description\": \"description\", \"price\": \"450\" }" }
   const initSpy = t.context.sandbox.stub(bikesModel, 'init')

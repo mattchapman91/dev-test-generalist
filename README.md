@@ -99,3 +99,19 @@ docker exec jlmongo mongoimport --collection bike /schema/bike.json --jsonArray
 - The default database is `test`, the default collection is `bike` with the data in it
 - The local Mongo instance sits on the default **TCP:27017** port you may have to tweak this if you're already running a local Mongo instance of your own
 - We suggest you use a Mongo GUI tool like [Robomongo](https://robomongo.org/) to make your life easier
+
+#### Usage notes
+- This test has been developed as a serverless application that could potentially be deployed to AWS or any other cloud provider.
+- To run this application you will need to install serverless locally `sudo npm install -g serverless` and install the dependencies `npm install`
+- Once serverless is installed you can run the application with the command `sls offline start` then the serverless application will run on port **3000**
+- To run the unit tests you can run the command `npm run test`
+- When adding a bike the name, description and price are required and the price must be between 1 and 9999
+- Both swagger and postman collections have been provided in the files `postman-collection.json` and `swagger.json` and curl examples below.
+
+#### Example CURL Commands
+##### Get all Bikes
+`curl -X GET \ http://localhost:3000/v1/bikes`
+##### Get bikes by id
+`curl -X GET \ http://localhost:3000/v1/bikes/:id:`
+##### Add new bike
+`curl -X POST \ http://localhost:3000/v1/bikes \ -d '{"name": "Example Bike Title", "description": "Example Bike Description", "price": "9991"}'`

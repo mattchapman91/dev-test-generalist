@@ -14,7 +14,7 @@ test.afterEach((t) => {
   t.context.sandbox.restore()
 })
 
-test('Getting a single bike => The handler function should return a 200 event when called.', async (t) => {
+test('Get Bike by ID => Should return a 200 with the requested bike if it exists.', async (t) => {
   const event = { pathParameters: {"id": 1} }
   const bikesModel = new BikesModel()
 
@@ -27,7 +27,7 @@ test('Getting a single bike => The handler function should return a 200 event wh
   t.is(body.data.bikeId, 1)
 })
 
-test('Getting a single => Returns a 500 when unable to connect to the database.', async (t) => {
+test('Get Bike by ID => Should return 500 with a generic error message when unable to connect to MongoDB.', async (t) => {
   const bikesModel = new BikesModel()
   const error = new Error();
   error.statusCode = 500
@@ -42,7 +42,7 @@ test('Getting a single => Returns a 500 when unable to connect to the database.'
   t.is(body.message, 'Something went wrong')
 })
 
-test('Getting a single bike => Returns a 400 when there the bike is not found.', async (t) => {
+test('Get Bike by ID => Returns a 400 when no bike with the inputted ID exists.', async (t) => {
   const bikesModel = new BikesModel()
   const initSpy = t.context.sandbox.stub(bikesModel, 'init')
     .returns({
@@ -59,9 +59,9 @@ test('Getting a single bike => Returns a 400 when there the bike is not found.',
   t.is(body.data.message, 'No bike with id invalid-id found.')
 })
 
-test('Getting a single bike => Returns a 200 when the bike has been found.', async (t) => {
+test('Get Bike by ID => Should return a 200 with the requested bike\'s document.', async (t) => {
   const bikesModel = new BikesModel()
-  const initSpy = t.context.sandbox.stub(bikesModel, 'init')
+  t.context.sandbox.stub(bikesModel, 'init')
     .returns({
       findOne () {
         return {

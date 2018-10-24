@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Bike Server",
+    "description": "TODO: Add Description",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/bikes": {
+      "get": {
+        "description": "This endpoint will return an array of all bikes in the database.",
+        "summary": "Get all bikes",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "BikesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "Validates and add's a new bike to the database.",
+        "summary": "Add a new Bike",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "BikesPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddANewBikerequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bikes/{bikeId}": {
+      "get": {
+        "description": "This request will return a data on a single by a specific bike by id",
+        "summary": "Get bike by bikeId",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "BikesByBikeIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bikeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The bikeId of the bike to query."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AddANewBikerequest": {
+      "title": "Add a new BikeRequest",
+      "example": {
+        "name": "Example Bike Title",
+        "description": "Example Bike Description",
+        "price": "45"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "description": {
+          "description": "",
+          "type": "string"
+        },
+        "price": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "price"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
