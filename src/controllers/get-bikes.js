@@ -1,4 +1,5 @@
 import BikesModel from '../models/bikes'
+import Helper from '../models/helper'
 
 /**
  * Get's all available bikes from the bikes collection in the database.
@@ -14,23 +15,7 @@ const getBikes = async (event, bikesModel) => {
   try {
     bikes = await bikesModel.getAllBikes()
   } catch (error) {
-    const statusCode = error.statusCode ? error.statusCode : 400
-    const status = String(statusCode)[0] === '5' ? 'error' : 'fail'
-    let message = error.message ? error.message : 'Something went wrong'
-
-    let responseBody = { status: status }
-
-    if (status === 'error') {
-      responseBody.message = message
-    } else {
-      responseBody.data = { message }
-    }
-
-    return {
-      statusCode,
-      body: JSON.stringify(responseBody),
-      headers: {}
-    }
+    return Helper.formatError(error)
   }
 
   return {
